@@ -1,8 +1,44 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+   ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-left">
+   <h2 class="display-4">Ler documentos CSV</h2>
+   <p>
+      Exemplo de como ler e processar o conteúdo de um documento em formato CSV, quando a sua estrutura é conhecida.<br />
+      Neste caso, o ficheiro não deve ter cabeçalho.
+   </p>
 </div>
+
+
+<hr />
+
+<div class="row">
+   <div class="col-md-4">
+      <form asp-action="Index" method="post" enctype="multipart/form-data">
+
+         <div class="form-group">
+            <label class="control-label">Ficheiro CSV</label>
+            <input name="ficheiro" type="file" class="form-control" accept=".csv" />
+         </div>
+         <div class="form-group">
+            <label class="control-label">
+               Estrutura do ficheiro<br />
+               <i>dia da semana</i>, <i>data</i>, <i>nº de pessoas</i>
+            </label>
+         </div>
+         <div class="form-group">
+            <label class="control-label">Separador campos</label>
+            <input name="separador" type="text" class="form-control" value="," />
+         </div>
+         <div class="form-group">
+            <input type="submit" value="Submeter" class="btn btn-primary" />
+         </div>
+      </form>
+   </div>
+</div>
+
+@section Scripts {
+   @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
